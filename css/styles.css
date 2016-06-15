@@ -11,10 +11,30 @@
 
 #arrow {
   text-align: center;
+  color: red;
+  font-size: 110px;
 }
 
 #dieRoll {
   font-size: 100px;
   text-align: center;
   margin-top: 25px;
+}
+
+#pageHeader {
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 40px;
+}
+
+body {
+  background-color: #A4CC95;
+}
+
+button{
+  margin-top: 10px;
+}
+
+#snakeEyes {
+  display: none;
 }

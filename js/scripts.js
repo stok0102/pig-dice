@@ -4,11 +4,15 @@ var playerOneScore = 0;
 var playerTwoScore = 0;
 var turn = 1;
 var dice = ['\u2680', '\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685'];
-$("#playerOneScore h2").text(playerOneScore);
-$("#playerTwoScore h2").text(playerTwoScore);
+
+function displayScores() {
+  $("#playerOneScore h2").text(playerOneScore);
+  $("#playerTwoScore h2").text(playerTwoScore);
+}
+
 function roll() {
-  die1 = Math.floor((Math.random() * 6) + 1);;
-  die2 = Math.floor((Math.random() * 6) + 1);;
+  die1 = Math.floor((Math.random() * 6) + 1);
+  die2 = Math.floor((Math.random() * 6) + 1);
   result = die1 + die2
   if (die1 === 1 && die2 === 1) {
     if (turn === 1) {
@@ -19,6 +23,8 @@ function roll() {
     }
     result *= 0;
     switchTurn();
+    $("#snakeEyes").fadeIn();
+    $("#snakeEyes").fadeOut();
   }
   else if (die1 === 1 || die2 === 1 ) {
     switchTurn(turn);
@@ -46,9 +52,9 @@ function stand(tempScore, turn){
 function switchTurn() {
   turn *= -1;
   tempScore *= 0;
-  $("#arrow h1").toggleClass("rotate")
+  $("#arrow p").toggleClass("rotate")
 }
-
+displayScores();
 //frontend logic
 $(document).ready(function() {
 
@@ -57,8 +63,7 @@ $(document).ready(function() {
     $("#die p").text(dice[die1] + dice[die2]);
     tempScore = runningScore(rollResult)
     $("#tempScore h2").text(tempScore);
-    $("#playerOneScore h2").text(playerOneScore);
-    $("#playerTwoScore h2").text(playerTwoScore);
+    displayScores();
   });
 
   $("#stand").click(function(){
@@ -72,10 +77,6 @@ $(document).ready(function() {
       playerTwoScore *= 0;
     }
 
-    $("#playerOneScore h2").text(playerOneScore);
-    $("#playerTwoScore h2").text(playerTwoScore);
-    console.log(playerOneScore);
-    console.log(playerTwoScore);
+    displayScores();
   });
-
 });

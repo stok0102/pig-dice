@@ -4,10 +4,23 @@ var playerOneScore = 0;
 var playerTwoScore = 0;
 var turn = 1;
 var dice = ['\u2680', '\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685'];
-
+$("#playerOneScore h2").text(playerOneScore);
+$("#playerTwoScore h2").text(playerTwoScore);
 function roll() {
-  result = Math.floor((Math.random() * 6) + 1);
-  if (result === 1) {
+  die1 = Math.floor((Math.random() * 6) + 1);;
+  die2 = Math.floor((Math.random() * 6) + 1);;
+  result = die1 + die2
+  if (die1 === 1 && die2 === 1) {
+    if (turn === 1) {
+      playerOneScore *= 0;
+    }
+    else {
+      playerTwoScore *= 0;
+    }
+    result *= 0;
+    switchTurn();
+  }
+  else if (die1 === 1 || die2 === 1 ) {
     switchTurn(turn);
     result *= 0;
   }
@@ -41,8 +54,11 @@ $(document).ready(function() {
 
   $("#roll").click(function() {
     var rollResult = roll();
-    $("#die p").text(dice[rollResult]);
-    $("#tempScore h2").text(runningScore(rollResult));
+    $("#die p").text(dice[die1] + dice[die2]);
+    tempScore = runningScore(rollResult)
+    $("#tempScore h2").text(tempScore);
+    $("#playerOneScore h2").text(playerOneScore);
+    $("#playerTwoScore h2").text(playerTwoScore);
   });
 
   $("#stand").click(function(){

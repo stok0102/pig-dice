@@ -1,14 +1,17 @@
 //backend logic
 var tempScore = 0;
-var totalScore = 0;
+var playerOneScore = 0;
+var playerTwoScore = 0;
+var turn = 1;
 
 function roll() {
   result = Math.floor((Math.random() * 6) + 1);
   if (result === 1) {
-    tempScore *= 0;
+    switchTurn(turn);
     return 0;
   }
   else {
+    console.log(tempScore);
     return result;
   }
 }
@@ -17,10 +20,21 @@ function runningScore(rollResult) {
   return tempScore;
 }
 
-function stand(tempScore){
-  totalScore += tempScore;
+function stand(tempScore, turn){
+  if (turn === 1) {
+    playerOneScore += tempScore;
+    return playerOneScore;
+  }
+  else {
+    playerTwoScore += tempScore;
+    return playerTwoScore;
+  }
+}
+
+function switchTurn() {
+  turn *= -1;
   tempScore *= 0;
-  return totalScore;
+  $("#arrow h1").toggleClass("rotate")
 }
 
 //frontend logic
@@ -33,14 +47,17 @@ $(document).ready(function() {
   });
 
   $("#stand").click(function(){
-    $("#totalScore h2").text(stand(tempScore));
-    tempScore *= 0;
+    stand(tempScore, turn);
+    $("#playerOneScore h2").text(playerOneScore);
+    $("#playerTwoScore h2").text(playerTwoScore);
+    switchTurn();
     $("#tempScore h2").text(tempScore);
-    if (totalScore >=100) {
+    if (playerOneScore >=100 || playerTwoScore >= 100) {
       return alert("GAME OVER");
       totalScore *= 0;
     }
     console.log(tempScore);
+    console.log(turn);
   });
 
 });

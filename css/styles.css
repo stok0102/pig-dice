@@ -1,14 +1,14 @@
-#die {
+.boxes {
   border: solid 2px black;
   height: 200px;
 }
 
-#tempScore {
-  border: solid 2px black;
-  height: 200px;
+.rotate {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
-#totalScore {
-  border: solid 2px black;
-  height: 200px;
+#arrow {
+  text-align: center;
 }

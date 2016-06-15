@@ -57,7 +57,6 @@ function switchTurn() {
 displayScores();
 //frontend logic
 $(document).ready(function() {
-
   $("#roll").click(function() {
     var rollResult = roll();
     $("#die p").text(dice[die1] + dice[die2]);

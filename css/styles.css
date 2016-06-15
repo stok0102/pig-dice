@@ -12,3 +12,9 @@
 #arrow {
   text-align: center;
 }
+
+#dieRoll {
+  font-size: 100px;
+  text-align: center;
+  margin-top: 25px;
+}

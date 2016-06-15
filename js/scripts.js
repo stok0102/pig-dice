@@ -3,18 +3,17 @@ var tempScore = 0;
 var playerOneScore = 0;
 var playerTwoScore = 0;
 var turn = 1;
+var dice = ['\u2680', '\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685'];
 
 function roll() {
   result = Math.floor((Math.random() * 6) + 1);
   if (result === 1) {
     switchTurn(turn);
-    return 0;
+    result *= 0;
   }
-  else {
-    console.log(tempScore);
-    return result;
-  }
+  return result;
 }
+
 function runningScore(rollResult) {
   tempScore += rollResult;
   return tempScore;
@@ -42,22 +41,25 @@ $(document).ready(function() {
 
   $("#roll").click(function() {
     var rollResult = roll();
-    $("#die h2").text(rollResult);
+    $("#die p").text(dice[rollResult]);
     $("#tempScore h2").text(runningScore(rollResult));
   });
 
   $("#stand").click(function(){
     stand(tempScore, turn);
-    $("#playerOneScore h2").text(playerOneScore);
-    $("#playerTwoScore h2").text(playerTwoScore);
     switchTurn();
     $("#tempScore h2").text(tempScore);
+
     if (playerOneScore >=100 || playerTwoScore >= 100) {
-      return alert("GAME OVER");
-      totalScore *= 0;
+      alert("GAME OVER");
+      playerOneScore *= 0;
+      playerTwoScore *= 0;
     }
-    console.log(tempScore);
-    console.log(turn);
+
+    $("#playerOneScore h2").text(playerOneScore);
+    $("#playerTwoScore h2").text(playerTwoScore);
+    console.log(playerOneScore);
+    console.log(playerTwoScore);
   });
 
 });

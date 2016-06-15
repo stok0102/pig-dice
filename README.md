@@ -19,6 +19,8 @@ The random dice roll should be applied to temporary score.
 * Output: 0+3 = 3, 3+4 = 7
 
 The temporary score should be added to player's total score
+* Input: stand
+* Output: Total score += temporary score
 
 Rolling a one should wipe out temporary score
 * Input: roll

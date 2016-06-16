@@ -31,14 +31,28 @@ function stand(tempScore, turn){
 }
 
 function switchTurn() {
+  debugger;
   turn *= -1;
   tempScore *= 0;
   $("#arrow h1").toggleClass("rotate")
+  if (turn !== 1) {
+    robotTurn();
+    $("#playerTwoScore h2").text(playerTwoScore);
+
+  }
+}
+
+function robotTurn() {
+  debugger;
+  var rollResult = roll();
+  $("#die p").text(dice[rollResult]);
+  $("#tempScore h2").text(runningScore(rollResult));
+  stand(tempScore, turn);
+  switchTurn(turn);
 }
 
 //frontend logic
 $(document).ready(function() {
-
   $("#roll").click(function() {
     var rollResult = roll();
     $("#die p").text(dice[rollResult]);
@@ -47,7 +61,7 @@ $(document).ready(function() {
 
   $("#stand").click(function(){
     stand(tempScore, turn);
-    switchTurn();
+    switchTurn(turn);
     $("#tempScore h2").text(tempScore);
 
     if (playerOneScore >=100 || playerTwoScore >= 100) {
@@ -61,5 +75,4 @@ $(document).ready(function() {
     console.log(playerOneScore);
     console.log(playerTwoScore);
   });
-
 });

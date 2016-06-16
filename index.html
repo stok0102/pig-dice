@@ -21,41 +21,42 @@
   <body>
     <div class="container">
       <header>
-        <h1>Pig Dice</h1>
+        <h1><a id="headerLink" href="http://boardgames.about.com/od/dicegames/a/pig_rules.htm">Pig Dice</a></h1>
       </header>
       <form id="playerOption" action="index.html" method="post">
         <select id="option" name="">
           <option value=1>One Player</option>
           <option value=2>Two Player</option>
         </select>
-        <button type="submit" name="button">Play</button>
+        <button type="submit" class="btn btn-danger" name="button">Insert Coin</button>
       </form>
-
-      <div class="row">
-        <div id="die" class="boxes col-sm-3 col-sm-offset-2">
-          <!-- <h3>Dice</h3> -->
-          <p id="dieRoll"></p>
+      <div id="gameGUI">
+        <div class="row">
+          <div id="die" class="boxes col-sm-3 col-sm-offset-2">
+            <!-- <h3>Dice</h3> -->
+            <p id="dieRoll"></p>
+          </div>
+          <div id="tempScore" class="boxes col-sm-3 col-sm-offset-2">
+            <h3>Temporary Score</h3>
+            <h2></h2>
+          </div>
         </div>
-        <div id="tempScore" class="boxes col-sm-3 col-sm-offset-2">
-          <h3>Temporary Score</h3>
-          <h2></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div id="playerOneScore" class="boxes col-sm-3 col-sm-offset-2">
-          <h3>Player 1 Score</h3>
-          <h2>0</h2>
-        </div>
-        <div id="arrow"class="col-sm-2">
-          <h1>&#8592;</h1>
-        </div>
-        <div id="playerTwoScore" class="boxes col-sm-3">
-          <h3>Player 2 Score</h3>
-          <h2>0</h2>
-        </div>
-        <div class="buttons col-sm-3 col-sm-offset-2">
-          <button id="roll" type="button">Roll</button>
-          <button id="stand" type="button">Stand</button>
+        <div class="row">
+          <div id="playerOneScore" class="boxes col-sm-3 col-sm-offset-2">
+            <h3>Player 1 Score</h3>
+            <h2>0</h2>
+          </div>
+          <div id="arrow"class="col-sm-2">
+            <h1>&#8592;</h1>
+          </div>
+          <div id="playerTwoScore" class="boxes col-sm-3">
+            <h3>Player 2 Score</h3>
+            <h2>0</h2>
+          </div>
+          <div class="buttons col-sm-3 col-sm-offset-2">
+            <button id="roll" class="btn btn-success" type="button">Roll</button>
+            <button id="stand" class="btn btn-warning" type="button">Stand</button>
+          </div>
         </div>
       </div>
   </body>

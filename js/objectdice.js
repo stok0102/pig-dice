@@ -70,6 +70,7 @@ Player.prototype.stand = function () {
   if (game.playerOneScore >=100 || game.playerTwoScore >= 100) {
     game.gameOver = true;
     alert("GAME OVER - Player one score: " + game.playerOneScore + " Player two score: " + game.playerTwoScore);
+  $("#playerOption").show();  
   game = new Game(1, false, 0, 0, [player1, player2]);
   player1 = new Player(1,0,0);
   player2 = new Player(-1,0,0);
@@ -85,6 +86,8 @@ $(document).ready(function() {
 
   $("form#playerOption").submit(function(event) {
   event.preventDefault();
+    $("#gameGUI").show();
+    $("#playerOption").hide();
     players = parseInt($("#option").val());
     console.log(players);
 

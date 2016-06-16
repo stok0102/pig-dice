@@ -18,3 +18,35 @@
   text-align: center;
   margin-top: 25px;
 }
+
+#headerLink{
+  color: black;
+  font-family: monospace;
+  text-align: center;
+}
+
+#headerLink:hover {
+  text-decoration: none;
+  cursor: default;
+  font-family: monospace;
+  color: black;
+  text-align: center;
+}
+
+#pageHeader {
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 40px;
+}
+
+#gameGUI {
+  display: none;
+}
+
+body {
+  background-color: #A4CC95;
+}
+
+button{
+  margin-top: 10px;
+}

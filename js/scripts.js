@@ -31,6 +31,7 @@ function stand(tempScore, turn){
 }
 
 function switchTurn() {
+  debugger;
   turn *= -1;
   tempScore *= 0;
   $("#arrow h1").toggleClass("rotate")
@@ -44,10 +45,6 @@ function switchTurn() {
 function robotTurn() {
   debugger;
   var rollResult = roll();
-  $("#die p").text(dice[rollResult]);
-  while (turn === -1) {
-    rollResult += roll();
-  }
   $("#die p").text(dice[rollResult]);
   $("#tempScore h2").text(runningScore(rollResult));
   stand(tempScore, turn);

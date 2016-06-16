@@ -34,8 +34,18 @@ Player.prototype.roll = function () {
   console.log(rollResult);
 }
 
+Game.prototype.robotTurn = function () {
+  player2.roll();
+  $("#tempScore h2").text(player2.tempScore);
+  if (game.turn !== 1) {
+    player2.stand();
+  }
+}
 Game.prototype.switchTurn = function () {
   this.turn *= -1;
+  if (game.turn === -1) {
+    game.robotTurn();
+  }
   $("#arrow h1").toggleClass("rotate")
 }
 
@@ -60,24 +70,13 @@ Player.prototype.stand = function () {
 //frontend logic
 $(document).ready(function() {
   $("#roll").click(function() {
-    if (game.turn === 1) {
-      player1.roll();
-      $("#tempScore h2").text(player1.tempScore);
-    }
-    else {
-      player2.roll();
-      $("#tempScore h2").text(player2.tempScore);
-    }
+    player1.roll();
+    $("#tempScore h2").text(player1.tempScore);
     $("#die p").text(dice[rollResult]);
   });
 
   $("#stand").click(function(){
-    if (game.turn === 1) {
       player1.stand();
-    }
-    else {
-      player2.stand();
-    }
     console.log(game);
   });
 });

@@ -43,9 +43,13 @@ Player.prototype.roll = function () {
 }
 
 Game.prototype.robotTurn = function () {
+  debugger;
   player2.roll();
   $("#tempScore h2").text(player2.tempScore);
-  if (game.turn !== 1) {
+  while (game.turn === -1) {
+    while (player2.tempScore < 10) {
+      player2.roll();
+    }
     player2.stand();
   }
 }

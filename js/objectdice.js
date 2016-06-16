@@ -15,6 +15,11 @@ function Game(turn, gameOver, playerOneScore, playerTwoScore, players) {
   this.players = players;
 }
 
+function displayScores(){
+  $("#playerOneScore h2").text(player1.score);
+  $("#playerTwoScore h2").text(player2.score);
+}
+
 var player1 = new Player(1,0,0);
 var player2 = new Player(-1,0,0);
 var game = new Game(1, false, 0, 0, [player1, player2]);
@@ -47,6 +52,10 @@ Player.prototype.stand = function () {
   player1 = new Player(1,0,0);
   player2 = new Player(-1,0,0);
   }
+  $("#playerOneScore h2").text(player1.score);
+  $("#playerTwoScore h2").text(player2.score);
+  $("#tempScore h2").text("");
+
 }
 //frontend logic
 $(document).ready(function() {
@@ -65,11 +74,9 @@ $(document).ready(function() {
   $("#stand").click(function(){
     if (game.turn === 1) {
       player1.stand();
-      $("#playerOneScore h2").text(player1.score);
     }
     else {
       player2.stand();
-      $("#playerTwoScore h2").text(player2.score);
     }
     console.log(game);
   });

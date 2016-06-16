@@ -1,6 +1,6 @@
 //backend logic
 var dice = ['\u2680', '\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685'];
-
+var players = 2;
 function Player(turn, tempScore, score) {
   this.turn = turn;
   this.tempScore = tempScore;
@@ -43,7 +43,6 @@ Player.prototype.roll = function () {
 }
 
 Game.prototype.robotTurn = function () {
-  debugger;
   player2.roll();
   $("#tempScore h2").text(player2.tempScore);
   while (game.turn === -1) {
@@ -55,8 +54,10 @@ Game.prototype.robotTurn = function () {
 }
 Game.prototype.switchTurn = function () {
   this.turn *= -1;
-  if (game.turn === -1) {
-    game.robotTurn();
+  if (players === 1) {
+    if (game.turn === -1) {
+      game.robotTurn();
+    }
   }
   $("#arrow h1").toggleClass("rotate")
 }
@@ -66,7 +67,7 @@ Player.prototype.stand = function () {
   this.tempScore = 0;
   game.playerOneScore = player1.score;
   game.playerTwoScore = player2.score;
-  if (game.playerOneScore >=20 || game.playerTwoScore >= 20) {
+  if (game.playerOneScore >=100 || game.playerTwoScore >= 100) {
     game.gameOver = true;
     alert("GAME OVER - Player one score: " + game.playerOneScore + " Player two score: " + game.playerTwoScore);
   game = new Game(1, false, 0, 0, [player1, player2]);
@@ -81,14 +82,33 @@ Player.prototype.stand = function () {
 }
 //frontend logic
 $(document).ready(function() {
+
+  $("form#playerOption").submit(function(event) {
+  event.preventDefault();
+    players = parseInt($("#option").val());
+    console.log(players);
+
+  });
+
   $("#roll").click(function() {
-    player1.roll();
-    $("#tempScore h2").text(player1.tempScore);
+    if (game.turn === 1) {
+      player1.roll();
+      $("#tempScore h2").text(player1.tempScore);
+    }
+    else if (game.turn === -1) {
+      player2.roll();
+      $("#tempScore h2").text(player2.tempScore);
+    }
     $("#die p").text(dice[die1] + dice[die2]);
   });
 
   $("#stand").click(function(){
+    if (game.turn === 1) {
       player1.stand();
+    }
+    else if (game.turn === -1) {
+      player2.stand();
+    }
     console.log(game);
   });
 });

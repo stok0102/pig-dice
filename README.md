@@ -3,15 +3,15 @@
 ## Specifications
 
 The player should be able to roll a die and get a number.
-* Input: click Roll!
-* Output: 3
+* Input: roll, roll, roll 
+* Output: 3, 3, 3
 
 The player should be able to roll a die and get a RANDOM number.
-* Input: click Roll!
-* Output: 34, 87, 23
+* Input: roll, roll, roll
+* Output: 3, 87, 23
 
 The player should be able to roll a die and get a RANDOM number between 1 and 6.
-* Input: click Roll!
+* Input: roll, roll, roll
 * Output: 3, 1, 5
 
 The random dice roll should be applied to temporary score.
